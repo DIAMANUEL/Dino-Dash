@@ -42,6 +42,10 @@ body {
     background-color: #120b49;
 }
 
+.medianoche {
+    background-color: black;
+}
+
 .dino {
     width: 84px;
     height: 84px;
@@ -79,8 +83,8 @@ body {
 }
 
 .cactus {
-    width: 46px;
-    height: 110px;
+    width: 60px;
+    height: 120px;
 
     position: absolute;
     bottom: 16px;
@@ -91,7 +95,7 @@ body {
 }
 
 .cactus2 {
-    width: 98px;
+    width: 108px;
     height: 90px;
 
     background: url(img/cactus2.png) no-repeat;
@@ -191,14 +195,14 @@ function Loop() {
 var sueloY = 22;
 var velY = 0;
 var impulso = 900;
-var gravedad = 2500;
+var gravedad = 2800;
 
 var dinoPosX = 42;
 var dinoPosY = sueloY;
 
 var sueloX = 0;
 var velEscenario = 1280 / 3;
-var gameVel = 1;
+var gameVel = 1.2;
 var score = 0;
 
 var parado = false;
@@ -362,15 +366,18 @@ function MoverNubes() {
 function GanarPuntos() {
     score++;
     textoScore.innerText = score;
-    if (score == 12) {
+    if (score == 10) {
         gameVel = 1.5;
         contenedor.classList.add("mediodia");
-    } else if (score == 35) {
+    } else if (score == 30) {
         gameVel = 2;
         contenedor.classList.add("tarde");
     } else if (score == 65) {
-        gameVel = 3;
+        gameVel = 2.8;
         contenedor.classList.add("noche");
+    } else if (score == 100) {
+        gameVel = 4;
+        contenedor.classList.add("medianoche");
     }
     suelo.style.animationDuration = (3 / gameVel) + "s";
 }
